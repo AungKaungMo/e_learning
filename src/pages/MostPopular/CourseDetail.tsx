@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { ArrowLeftIcon } from "@heroicons/react/16/solid";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { UserIcon } from "@heroicons/react/16/solid";
@@ -40,7 +40,7 @@ export const CourseDetail: React.FC<{}> = () => {
 
   const isUnderTabletScreen = useMediaQuery("(max-width:900px)");
   const isMobileScreen = useMediaQuery("(max-width:550px)");
-  const { id } = useParams();
+  // const { id } = useParams();
   return pageLoading ? (
     <PageLoading />
   ) : (
