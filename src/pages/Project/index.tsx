@@ -27,6 +27,7 @@ export const Project: React.FC<propsType> = ({
     <motion.div
       onViewportEnter={() => setSelectedPage(SelectedPage.Project)}
       className="w-11/12 mx-auto mt-20"
+      id="project"
     >
       <div className="text-center sm:text-5xl text-3xl font-bold">
         Students Project
