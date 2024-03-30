@@ -34,19 +34,16 @@ export const Reviews: React.FC<propsType> = ({
       <Testimonial />
       <div className="mt-10 bg-bgSecondary p-4  pb-20">
         <div
-          className={`flex w-11/12 mx-auto ${
-            isTabletScreen ? "flex-col" : " flex-row-reverse"
-          }`}
+          className={`flex w-11/12 mx-auto ${isTabletScreen ? "flex-col" : " flex-row-reverse"
+            }`}
         >
           <div
-            className={`${
-              isTabletScreen ? "text-center mx-auto mt-10" : "ms-10 mt-[16%]"
-            }`}
+            className={`${isTabletScreen ? "text-center mx-auto mt-10" : "ms-10 mt-[16%]"
+              }`}
           >
             <h1
-              className={`${
-                isUnderTabletScreen ? "text-5xl" : "text-4xl"
-              } font-bold`}
+              className={`${isUnderTabletScreen ? "text-5xl" : "text-4xl"
+                } font-bold`}
             >
               Some valuable feedback from our students
             </h1>
@@ -68,16 +65,14 @@ export const Reviews: React.FC<propsType> = ({
             </div>
 
             <div
-              className={`flex ${
-                isUnderTabletScreen ? "flex-col" : "flex-row"
-              }`}
+              className={`flex ${isUnderTabletScreen ? "flex-col" : "flex-row"
+                }`}
             >
               <div className="z-20 mt-24">
                 {/* <div> */}
                 <Card
-                  className={`${
-                    isTabletScreen ? "w-full" : "w-[350px]"
-                  } bg-background shadow-xl rounded-[8px] `}
+                  className={`${isTabletScreen ? "w-full" : "w-[350px]"
+                    } bg-background shadow-xl rounded-[8px] `}
                 >
                   <CardHeader className="w-20 h-20 rounded-full mx-auto my-5 overflow-hidden">
                     <img src={User1} className="w-full h-full object-cover" />
@@ -137,9 +132,8 @@ export const Reviews: React.FC<propsType> = ({
 
                 <div className="">
                   <Card
-                    className={`relative p-4 rounded-[8px] bg-background shadow-xl ${
-                      isUnderTabletScreen ? "w-full mt-8" : "w-[300px] "
-                    } `}
+                    className={`relative p-4 rounded-[8px] bg-background shadow-xl ${isUnderTabletScreen ? "w-full mt-8" : "w-[300px] "
+                      } `}
                   >
                     <CardHeader className="w-20 h-20 rounded-full mx-auto mt-5 overflow-hidden">
                       <img src={User2} className="w-full h-full object-cover" />

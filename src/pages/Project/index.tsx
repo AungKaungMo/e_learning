@@ -1,7 +1,6 @@
 import { SelectedPage } from "@/shared/types/types";
 import React from "react";
 import { motion } from "framer-motion";
-import { projectsData } from "@/data/projects";
 import { StudentProjectTypes } from "@/shared/types/types";
 
 import ProjectCard from "./ProjectCard";
@@ -28,7 +27,7 @@ export const Project: React.FC<propsType> = ({
   const isUnderTabletScreen = useMediaQuery("(max-width:600px)");
   const { data, isSuccess } = useStudentProjectQuery();
 
-    const projects: StudentProjectTypes[] = data ? data.data : [];
+  const projects: StudentProjectTypes[] = data ? data.data : [];
 
   return (
     <motion.div
@@ -41,35 +40,34 @@ export const Project: React.FC<propsType> = ({
       </div>
       <div className="mt-10">
         {isSuccess && (
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-          className="w-full "
-        >
-          <CarouselContent>
-            {projects.map((project) => (
-              <CarouselItem
-                key={project.id}
-                className={`${
-                  isUnderTabletScreen
-                    ? "basis-full"
-                    : isTabletScreen
-                    ? "basis-1/2"
-                    : "basis-1/3"
-                } xl:basis-1/4 `}
-              >
-                <ProjectCard project={project} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="ms-7" />
-          <CarouselNext className="me-7" />
-        </Carousel>
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-full "
+          >
+            <CarouselContent>
+              {projects.map((project) => (
+                <CarouselItem
+                  key={project.id}
+                  className={`${isUnderTabletScreen
+                      ? "basis-full"
+                      : isTabletScreen
+                        ? "basis-1/2"
+                        : "basis-1/3"
+                    } xl:basis-1/4 `}
+                >
+                  <ProjectCard project={project} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="ms-7" />
+            <CarouselNext className="me-7" />
+          </Carousel>
         )}
 
         {projects?.length === 0 && <div className='text-center'>Upcoming projects .....</div>}
-      
+
       </div>
     </motion.div>
   );
