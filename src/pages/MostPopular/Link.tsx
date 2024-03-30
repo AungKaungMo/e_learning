@@ -1,10 +1,10 @@
-import { PopularCourseTypes } from "@/shared/types/types";
+import { PopularCourseType } from "@/shared/types/types";
 import React from "react";
 
 type propsType = {
-  compo: string;
-  selectedCompo: PopularCourseTypes;
-  setSelectedCompo: (value: PopularCourseTypes) => void;
+  compo: PopularCourseType;
+  selectedCompo: PopularCourseType | undefined;
+  setSelectedCompo: (value: PopularCourseType) => void;
 };
 
 export const Link: React.FC<propsType> = ({
@@ -12,19 +12,17 @@ export const Link: React.FC<propsType> = ({
   selectedCompo,
   setSelectedCompo,
 }: propsType) => {
-  const lowerCasePage = compo
-    .toLowerCase()
-    .replace(/ /g, "") as PopularCourseTypes;
+  if (!selectedCompo) return null;
   return (
     <div
-      className={`cursor-pointer rounded-[5px] p-3  ${
-        selectedCompo == lowerCasePage
+      className={`cursor-pointer rounded-[5px] p-3 min-w-28 text-center  ${
+        selectedCompo?.name == compo?.name
           ? " bg-blue-500 text-white  "
           : " text-blue-500 transition-all duration-150 hover:opacity-70"
       }`}
-      onClick={() => setSelectedCompo(lowerCasePage)}
+      onClick={() => setSelectedCompo(compo)}
     >
-      {compo}
+      {compo.name}
     </div>
   );
 };

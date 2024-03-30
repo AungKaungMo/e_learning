@@ -25,16 +25,26 @@ export enum PopularCourseTypes {
   UiUxDesign = "uiuxdesign",
 }
 
+export type PopularCourseType = {
+  id: number;
+  name: string;
+};
+
 export type CourseDataTypes = {
   id: number;
-  image: string;
+  slug?: string;
+  imageUrl: string;
   type: string;
   title: string;
-  description: string;
+  except?: string;
+  description?: string;
   rating: number;
-  durations: string;
-  lectureCount: number;
-  categoryType: string[];
+  duration: string;
+  lecture: number;
+  category: {
+    id: number;
+    name: string;
+  };
 };
 
 export type ReviewerTypes = {
@@ -61,17 +71,40 @@ export type TeamMembersTypes = {
 
 export type StudentProjectTypes = {
   id: number;
-  image: string;
+  imageUrl: string;
   type: string;
   title: string;
+  expect?: string;
   description: string;
   categoryType: string[];
 };
 
 export type TestimonialTypes = {
   id: number;
-  image: string;
+  imageUrl: string;
   name: string;
-  description: string;
+  except: string;
+  review: string;
   rating: number;
 };
+
+export type CourseDetailType = {
+  id: number;
+  categoryId: number;
+  description: string;
+  duration: string;
+  except: string;
+  imageUrl: string;
+  lectures: number;
+  price: number;
+  rating: number;
+  skill: string;
+  slug: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  category: {
+    id: number;
+    name: string;
+  }
+}

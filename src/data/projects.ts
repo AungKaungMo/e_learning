@@ -9,7 +9,7 @@ import Project6 from "@/assets/images/08.jpg";
 export const projectsData: StudentProjectTypes[] = [
   {
     id: 1,
-    image: Project1,
+    imageUrl: Project1,
     type: "Web",
     title: "Project Title of the same element of 1",
     description:
@@ -18,7 +18,7 @@ export const projectsData: StudentProjectTypes[] = [
   },
   {
     id: 2,
-    image: Project2,
+    imageUrl: Project2,
     type: "mobile",
     title: "Project Title of the same element of 2",
     description:
@@ -27,7 +27,7 @@ export const projectsData: StudentProjectTypes[] = [
   },
   {
     id: 3,
-    image: Project3,
+    imageUrl: Project3,
     type: "Mobile",
     title: "Project Title of the same element of 3",
     description:
@@ -36,7 +36,7 @@ export const projectsData: StudentProjectTypes[] = [
   },
   {
     id: 4,
-    image: Project4,
+    imageUrl: Project4,
     type: "Game",
     title: "Project Title of the same element of 4",
     description:
@@ -45,7 +45,7 @@ export const projectsData: StudentProjectTypes[] = [
   },
   {
     id: 5,
-    image: Project5,
+    imageUrl: Project5,
     type: "Game",
     title: "Project Title of the same element of 1",
     description:
@@ -54,7 +54,7 @@ export const projectsData: StudentProjectTypes[] = [
   },
   {
     id: 6,
-    image: Project6,
+    imageUrl: Project6,
     type: "Web",
     title: "Project Title of the same element of 6",
     description:

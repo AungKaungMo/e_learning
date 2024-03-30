@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import { PopularCourseTypes } from "@/shared/types/types";
+import React, { useEffect, useState } from "react";
+import { PopularCourseType } from "@/shared/types/types";
 import CourseCard from "./CourseCard";
-import { coursesData } from "@/data/courses";
 import useMediaQuery from "@/hook/useMediaQuery";
 import { SelectedPage } from "@/shared/types/types";
 import { motion } from "framer-motion";
+import { CourseDataTypes } from "@/shared/types/types";
+import { useCategoriesQuery } from "@/redux/api/categoryApiSlice";
 
 import Link from "./Link";
+
+import { useCourseQuery } from "@/redux/api/courseApiSlice";
 
 type propsType = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -15,19 +18,25 @@ type propsType = {
 export const Courses: React.FC<propsType> = ({
   setSelectedPage,
 }: propsType) => {
-  const [selectedCompo, setSelectedCompo] = useState<PopularCourseTypes>(
-    PopularCourseTypes.WebDesign
-  );
-
   const isTabletScreen = useMediaQuery("(max-width:980px)");
   const isUnderTabletScreen = useMediaQuery("(max-width:600px)");
 
-  const menus: string[] = [
-    "Web Design",
-    "Development",
-    "Graphic Design",
-    "Ui/Ux Design",
-  ];
+  const categories = useCategoriesQuery();
+  const { data, isSuccess } = useCourseQuery();
+  const courses: CourseDataTypes[] = data ? data.data : [];
+
+  const menus: PopularCourseType[] = categories.data
+    ? categories.data.data
+    : [];
+
+  const [selectedCompo, setSelectedCompo] = useState<
+    PopularCourseType | undefined
+  >();
+
+  useEffect(() => {
+    setSelectedCompo(menus[0]);
+  }, [menus]);
+
   return (
     <motion.div
       onViewportEnter={() => setSelectedPage(SelectedPage.Courses)}
@@ -43,21 +52,22 @@ export const Courses: React.FC<propsType> = ({
 
       <div className=" bg-bgSecondary rounded-[5px] p-3 mt-8">
         <div className="flex justify-center flex-wrap items-center lg:gap-20 gap-10">
-          {menus.map((menu) => (
-            <Link
-              key={menu}
-              compo={menu}
-              selectedCompo={selectedCompo}
-              setSelectedCompo={setSelectedCompo}
-            />
-          ))}
+          {categories.isSuccess &&
+            menus.map((menu) => (
+              <Link
+                key={menu.id}
+                compo={menu}
+                selectedCompo={selectedCompo}
+                setSelectedCompo={setSelectedCompo}
+              />
+            ))}
         </div>
       </div>
 
       {/* Course Card */}
 
       <div
-        className={`grid xl:grid-cols-4 gap-7 mt-16 ${
+        className={`grid xl:grid-cols-4 gap-7 mt-16 relative ${
           isUnderTabletScreen
             ? "grid-cols-1"
             : isTabletScreen
@@ -65,14 +75,21 @@ export const Courses: React.FC<propsType> = ({
             : "grid-cols-3"
         }`}
       >
-        {coursesData.map((course) => (
-          <CourseCard
-            key={course.id}
-            course={course}
-            selectedCompo={selectedCompo}
-          />
-        ))}
+        {isSuccess &&
+          courses.map((course) => (
+            <CourseCard
+              key={course.id}
+              course={course}
+              selectedCompo={selectedCompo}
+            />
+          ))}
+          
       </div>
+      {
+            courses.length === 0 && (
+              <div className='text-center'>No Courses found</div>
+            )
+          }
     </motion.div>
   );
 };

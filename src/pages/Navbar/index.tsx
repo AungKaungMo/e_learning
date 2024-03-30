@@ -28,8 +28,7 @@ export const Navbar: React.FC<propsType> = ({
     "Reviews",
     // "Contact Us",
   ];
-  const { setTheme } = useTheme();
-
+  const { setTheme, theme } = useTheme();
   const changeLightTheme = () => {
     setIsDark(!isDark);
     setTheme("light");
@@ -65,7 +64,7 @@ export const Navbar: React.FC<propsType> = ({
           </div>
           <div className="flex gap-8">
             <button className="pt-1">
-              {isDark ? (
+              {theme == "dark" ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

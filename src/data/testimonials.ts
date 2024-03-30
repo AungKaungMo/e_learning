@@ -9,40 +9,45 @@ export const testimonialData: TestimonialTypes[] = [
   {
     id: 1,
     name: "Albert Json",
-    image: User1,
-    description:
+    imageUrl: User1,
+    except: "lorem isp dolor sit amet, conesef adipisicing elit. fi...",
+    review:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa aut molestias quia amet fuga vitae enim, vero illo sint corporis repudiandae.",
     rating: 4,
   },
   {
     id: 2,
     name: "Jhon DePr",
-    image: User2,
-    description:
+    imageUrl: User2,
+    except: "lorem isp dolor sit amet, conesef adipisicing elit. fi...",
+    review:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa aut molestias quia amet fuga vitae enim, vero illo sint corporis repudiandae.",
     rating: 5,
   },
   {
     id: 3,
     name: "Mein Grid",
-    image: User3,
-    description:
+    imageUrl: User3,
+    except: "lorem isp dolor sit amet, conesef adipisicing elit. fi...",
+    review:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa aut molestias quia amet fuga vitae enim, vero illo sint corporis repudiandae.",
     rating: 3,
   },
   {
     id: 4,
     name: "Lisa Nano",
-    image: User4,
-    description:
+    imageUrl: User4,
+    except: "lorem isp dolor sit amet, conesef adipisicing elit. fi...",
+    review:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa aut molestias quia amet fuga vitae enim, vero illo sint corporis repudiandae.",
     rating: 5,
   },
   {
     id: 5,
     name: "Minami Ya",
-    image: User5,
-    description:
+    imageUrl: User5,
+    except: "lorem isp dolor sit amet, conesef adipisicing elit. fi...",
+    review:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa aut molestias quia amet fuga vitae enim, vero illo sint corporis repudiandae.",
     rating: 4,
   },

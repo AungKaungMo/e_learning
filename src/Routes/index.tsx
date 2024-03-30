@@ -11,7 +11,7 @@ const MainRoutes = {
       element: <Landing />,
     },
     {
-      path: "/course/:id",
+      path: "/course/:slug",
       element: <CourseDetail />,
     },
   ],

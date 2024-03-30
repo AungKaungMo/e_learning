@@ -2,7 +2,11 @@ import { SelectedPage } from "@/shared/types/types";
 import React from "react";
 import { motion } from "framer-motion";
 import { projectsData } from "@/data/projects";
+import { StudentProjectTypes } from "@/shared/types/types";
+
 import ProjectCard from "./ProjectCard";
+
+import { useStudentProjectQuery } from "@/redux/api/studentProjectSlice";
 
 import {
   Carousel,
@@ -22,6 +26,9 @@ export const Project: React.FC<propsType> = ({
 }: propsType) => {
   const isTabletScreen = useMediaQuery("(max-width:980px)");
   const isUnderTabletScreen = useMediaQuery("(max-width:600px)");
+  const { data, isSuccess } = useStudentProjectQuery();
+
+    const projects: StudentProjectTypes[] = data ? data.data : [];
 
   return (
     <motion.div
@@ -33,6 +40,7 @@ export const Project: React.FC<propsType> = ({
         Students Project
       </div>
       <div className="mt-10">
+        {isSuccess && (
         <Carousel
           opts={{
             align: "start",
@@ -40,7 +48,7 @@ export const Project: React.FC<propsType> = ({
           className="w-full "
         >
           <CarouselContent>
-            {projectsData.map((project) => (
+            {projects.map((project) => (
               <CarouselItem
                 key={project.id}
                 className={`${
@@ -58,6 +66,10 @@ export const Project: React.FC<propsType> = ({
           <CarouselPrevious className="ms-7" />
           <CarouselNext className="me-7" />
         </Carousel>
+        )}
+
+        {projects?.length === 0 && <div className='text-center'>Upcoming projects .....</div>}
+      
       </div>
     </motion.div>
   );

@@ -11,19 +11,19 @@ export const ProjectCard: React.FC<CombinePropsType> = ({
   project,
 }: //   selectedCompo,
 CombinePropsType) => {
-  const { image, type, title, description } = project;
+  const { imageUrl, category, title, except, description } = project;
   return (
     <>
       {/* categoryType.includes(selectedCompo) && */}
       {
         <Card className="rounded-[15px] overflow-hidden">
           <CardHeader className="w-full h-56">
-            <img src={image} className="w-full h-full object-cover" />
+            <img src={imageUrl} className="w-full h-full object-cover border-b" />
           </CardHeader>
           <CardContent className="mt-3 !pb-2">
             <div className="flex justify-between items-center">
               <button className=" p-1 bg-purple-100 rounded-[5px] hover:bg-purple-100 text-purple-500 text-sm">
-                {type}
+                {category?.name}
               </button>
               {/* <HeartIcon className="w-6 h-6" /> */}
             </div>
@@ -32,9 +32,10 @@ CombinePropsType) => {
                 {title.length > 45 ? title.slice(0, 45) + "..." : title}
               </h2>
               <p className="mt-3 opacity-70 text-sm  h-24">
-                {description.length > 200
+                {/* {description.length > 200
                   ? description.slice(0, 200) + "..."
-                  : description}
+                  : description} */}
+                  {except}
               </p>
             </div>
           </CardContent>

@@ -10,15 +10,15 @@ type propsType = {
 export const TestimonialCard: React.FC<propsType> = ({
   testimonial,
 }: propsType) => {
-  const { image, name, description, rating } = testimonial;
+  const { imageUrl, name, except, rating } = testimonial;
   return (
     <div className={`p-4 `}>
-      <div className=" w-24 h-24 rounded-full overflow-hidden mx-auto">
-        <img src={image} className="w-full h-full object-cover" />
+      <div className=" w-24 h-24 rounded-full overflow-hidden mx-auto border ">
+        <img src={imageUrl} className="w-full h-full object-cover " />
       </div>
       <div className="mt-4">
         <div className="text-center font-semibold opacity-80">{name}</div>
-        <div className="text-sm text-center mt-3 opacity-70">{description}</div>
+        <div className="text-sm text-center mt-3 opacity-70">{except}</div>
         <div className="flex justify-center mt-2">
           {Array(5)
             .fill(null)
