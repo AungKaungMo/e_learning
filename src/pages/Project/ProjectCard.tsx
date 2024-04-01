@@ -11,7 +11,7 @@ export const ProjectCard: React.FC<CombinePropsType> = ({
   project,
 }: //   selectedCompo,
   CombinePropsType) => {
-  const { imageUrl, type, title, expect } = project;
+  const { imageUrl, title, except } = project;
   return (
     <>
       {/* categoryType.includes(selectedCompo) && */}
@@ -22,9 +22,9 @@ export const ProjectCard: React.FC<CombinePropsType> = ({
           </CardHeader>
           <CardContent className="mt-3 !pb-2">
             <div className="flex justify-between items-center">
-              <button className=" p-1 bg-purple-100 rounded-[5px] hover:bg-purple-100 text-purple-500 text-sm">
+              {/* <button className=" p-1 bg-purple-100 rounded-[5px] hover:bg-purple-100 text-purple-500 text-sm">
                 {type}
-              </button>
+              </button> */}
               {/* <HeartIcon className="w-6 h-6" /> */}
             </div>
             <div className="mt-3">
@@ -35,7 +35,7 @@ export const ProjectCard: React.FC<CombinePropsType> = ({
                 {/* {description.length > 200
                   ? description.slice(0, 200) + "..."
                   : description} */}
-                {expect}
+                {except}
               </p>
             </div>
           </CardContent>

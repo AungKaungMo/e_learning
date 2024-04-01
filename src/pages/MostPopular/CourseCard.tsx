@@ -37,7 +37,7 @@ export const CourseCard: React.FC<CombinePropsType> = ({
   if (!selectedCompo) return null;
   return (
     <>
-      {category?.name == selectedCompo?.name ? (
+      {(category?.name == selectedCompo?.name || selectedCompo?.name == 'All') && (
         <Link
           to={`course/${slug}`}
           className=" hover:text-blue-400 transition-all duration-150"
@@ -99,11 +99,6 @@ export const CourseCard: React.FC<CombinePropsType> = ({
             </CardFooter>
           </Card>
         </Link>
-
-      ) : (
-        <h2 className=" absolute inset-0 text-center">
-          Upcoming courses .....
-        </h2>
       )}
     </>
   );

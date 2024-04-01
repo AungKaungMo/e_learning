@@ -72,9 +72,9 @@ export type TeamMembersTypes = {
 export type StudentProjectTypes = {
   id: number;
   imageUrl: string;
-  type: string;
+  type?: string;
   title: string;
-  expect?: string;
+  except?: string;
   description: string;
   categoryType: string[];
 };

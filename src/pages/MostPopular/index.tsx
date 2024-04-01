@@ -25,17 +25,34 @@ export const Courses: React.FC<propsType> = ({
   const { data, isSuccess } = useCourseQuery();
   const courses: CourseDataTypes[] = data ? data.data : [];
 
-  const menus: PopularCourseType[] = categories.data
-    ? categories.data.data
-    : [];
+  const [menus, setMenus] = useState<PopularCourseType[]>([{ id: 0, name: 'All' }])
+
+
+  // setMenus(menu)
 
   const [selectedCompo, setSelectedCompo] = useState<
     PopularCourseType | undefined
   >();
 
+  const [filteringCourse, setFilteringCourse] = useState<CourseDataTypes[] | undefined>([]);
+
   useEffect(() => {
+    if (selectedCompo?.name == 'All') {
+      setFilteringCourse(courses);
+    } else {
+      const filterCourse = courses.filter((course) => course.category.name === selectedCompo?.name);
+      setFilteringCourse(filterCourse);
+    }
+  }, [selectedCompo, courses])
+
+  useEffect(() => {
+    const menu = categories.data
+      ? categories.data.data
+      : [];
+    setMenus(menus.concat(menu));
     setSelectedCompo(menus[0]);
-  }, [menus]);
+  }, [categories]);
+
 
   return (
     <motion.div
@@ -66,14 +83,16 @@ export const Courses: React.FC<propsType> = ({
 
       {/* Course Card */}
 
+      {filteringCourse?.length === 0 && (
+        <div className="text-center pt-16">Upcoming Courses ....</div>
+      )}
       <div
-        className={`grid xl:grid-cols-4 gap-7 mt-16 relative ${
-          isUnderTabletScreen
-            ? "grid-cols-1"
-            : isTabletScreen
+        className={`grid xl:grid-cols-4 gap-7 mt-16 relative ${isUnderTabletScreen
+          ? "grid-cols-1"
+          : isTabletScreen
             ? "grid-cols-2"
             : "grid-cols-3"
-        }`}
+          }`}
       >
         {isSuccess &&
           courses.map((course) => (
@@ -83,13 +102,9 @@ export const Courses: React.FC<propsType> = ({
               selectedCompo={selectedCompo}
             />
           ))}
-          
+
       </div>
-      {
-            courses.length === 0 && (
-              <div className='text-center'>No Courses found</div>
-            )
-          }
+
     </motion.div>
   );
 };
